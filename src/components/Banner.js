@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import headerImg from "../assets/img/header-img.svg";
 import { ArrowRightCircle } from 'react-bootstrap-icons';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
@@ -11,7 +10,7 @@ export const Banner = () => {
   const [text, setText] = useState('');
   const [delta, setDelta] = useState(300 - Math.random() * 100);
   const [index, setIndex] = useState(1);
-  const toRotate = [ "Web Developer", "Web Designer", "UI/UX Designer" ];
+  const toRotate = ["Software Engineer", "WordPress Developer", "React.js Developer", "Shopify Expert"];
   const period = 2000;
 
   useEffect(() => {
@@ -47,28 +46,44 @@ export const Banner = () => {
     }
   }
 
+  const handleDownloadCV = () => {
+    try {
+      const cvUrl = process.env.PUBLIC_URL + '/Sameea CV.pdf';
+      const link = document.createElement('a');
+      link.href = cvUrl;
+      link.download = 'Sameea_CV.pdf';
+      link.target = '_blank';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      setTimeout(() => {
+        window.open(cvUrl, '_blank');
+      }, 1000);
+      
+    } catch (error) {
+      console.error('Error downloading CV:', error);
+      alert('CV download failed. Please check the file path.');
+    }
+  }
+
   return (
     <section className="banner" id="home">
       <Container>
         <Row className="aligh-items-center">
-          <Col xs={12} md={6} xl={7}>
+          <Col xs={12} md={8} xl={7}>
             <TrackVisibility>
               {({ isVisible }) =>
-              <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-                <span className="tagline">Welcome to my Portfolio</span>
-                <h1>{`Hi! I'm Sameea`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Web Developer", "Web Designer" ]'><span className="wrap">{text}</span></span></h1>
-                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                  <button onClick={() => console.log('connect')}>Let’s Connect <ArrowRightCircle size={25} /></button>
-              </div>}
-            </TrackVisibility>
-          </Col>
-          <Col xs={12} md={6} xl={5}>
-            <TrackVisibility>
-              {({ isVisible }) =>
-                <div className={isVisible ? "animate__animated animate__zoomIn" : ""}>
-                  <img src={headerImg} alt="Header Img"/>
+                <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
+                  <span className="tagline">Welcome to my Portfolio</span>
+                  <h1>{`Hi! I'm Sameea`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Software Engineer", "WordPress Developer", "React.js Developer" ]'><span className="wrap">{text}</span></span></h1>
+                  <p>Software Engineer with expertise in WordPress development, React.js, Next.js, TypeScript, Tailwind CSS, and Shopify. Experienced in WordPress theme customization, plugin development, React Hooks, state management, and performance optimization. Skilled in creating visually appealing and conversion-focused eCommerce websites with seamless digital experiences.</p>
+                  <button onClick={handleDownloadCV}>Download my CV<ArrowRightCircle size={25} /></button>
                 </div>}
             </TrackVisibility>
+          </Col>
+          <Col xs={12} md={4} xl={5}>
+            {/* Image removed - space for better text layout */}
           </Col>
         </Row>
       </Container>

@@ -1,8 +1,12 @@
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
 import { ProjectCard } from "./ProjectCard";
-import projImg1 from "../assets/img/project-img1.png";
-import projImg2 from "../assets/img/project-img2.png";
-import projImg3 from "../assets/img/project-img3.png";
+import youtubeCloneImg from "../assets/img/youtube-clone.png";
+import foodAppImg from "../assets/img/food-app.png";
+import sameeaStoreImg from "../assets/img/sameea-store.png";
+import responsiveImg from "../assets/img/responsive-portfolio.png";
+import shopifyProject1 from "../assets/img/shopify-project1.png";
+import shopifyProject2 from "../assets/img/shopify-project2.png";
+import cssCardsImg from "../assets/img/css-cards.png";
 import colorSharp2 from "../assets/img/color-sharp2.png";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
@@ -11,34 +15,46 @@ export const Project = () => {
 
   const projects = [
     {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg1,
+      title: "Responsive Portfolio", 
+      description: "Modern Responsive Design",
+      imgUrl: responsiveImg,
+      projectUrl: "https://responsive-portfolio-website-two.vercel.app/"
     },
     {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg2,
+      title: "YouTube Clone",
+      description: "UI Clone Project", 
+      imgUrl: youtubeCloneImg,
+      projectUrl: "https://youtube-clone-gray-three.vercel.app/"
     },
     {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg3,
+      title: "Food App",
+      description: "Restaurant Application",
+      imgUrl: foodAppImg,
+      projectUrl: "https://food-app-flax-tau.vercel.app/"
     },
     {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg1,
+      title: "Sameea Store",
+      description: "E-commerce Website",
+      imgUrl: sameeaStoreImg,
+      projectUrl: "https://oursameeastore.rf.gd/"
     },
     {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg2,
+      title: "Shopify Store 1",
+      description: "E-commerce Development",
+      imgUrl: shopifyProject1,
+      projectUrl: "#"
     },
     {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg3,
+      title: "Shopify Store 2", 
+      description: "Store Customization",
+      imgUrl: shopifyProject2,
+      projectUrl: "#"
+    },
+    {
+      title: "CSS Card Hover Effects",
+      description: "Interactive CSS Cards",
+      imgUrl: cssCardsImg,
+      projectUrl: "https://css-card-hover-fawn.vercel.app/"
     },
   ];
 
@@ -51,17 +67,17 @@ export const Project = () => {
               {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeIn": ""}>
                 <h2>Projects</h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <p>Here are some of my recent projects showcasing my expertise in React.js, WordPress, Shopify, CSS animations, and frontend development. Each project demonstrates different aspects of modern web development and responsive design.</p>
                 <Tab.Container id="projects-tabs" defaultActiveKey="first">
                   <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                     <Nav.Item>
-                      <Nav.Link eventKey="first">Tab 1</Nav.Link>
+                      <Nav.Link eventKey="first">All Projects</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                      <Nav.Link eventKey="second">Tab 2</Nav.Link>
+                      <Nav.Link eventKey="second">Frontend</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                      <Nav.Link eventKey="third">Tab 3</Nav.Link>
+                      <Nav.Link eventKey="third">E-commerce</Nav.Link>
                     </Nav.Item>
                   </Nav>
                   <Tab.Content id="slideInUp" className={isVisible ? "animate__animated animate__slideInUp" : ""}>
@@ -79,11 +95,42 @@ export const Project = () => {
                         }
                       </Row>
                     </Tab.Pane>
-                    <Tab.Pane eventKey="section">
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
+                    <Tab.Pane eventKey="second">
+                      <Row>
+                        {
+                          projects.filter(project => 
+                            project.title.includes("Portfolio") || 
+                            project.title.includes("YouTube") || 
+                            project.title.includes("Food App") ||
+                            project.title.includes("CSS Card")
+                          ).map((project, index) => {
+                            return (
+                              <ProjectCard
+                                key={index}
+                                {...project}
+                                />
+                            )
+                          })
+                        }
+                      </Row>
                     </Tab.Pane>
                     <Tab.Pane eventKey="third">
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
+                      <Row>
+                        {
+                          projects.filter(project => 
+                            project.title.includes("Shopify") || 
+                            project.title.includes("Store") ||
+                            project.title.includes("E-commerce")
+                          ).map((project, index) => {
+                            return (
+                              <ProjectCard
+                                key={index}
+                                {...project}
+                                />
+                            )
+                          })
+                        }
+                      </Row>
                     </Tab.Pane>
                   </Tab.Content>
                 </Tab.Container>
@@ -92,7 +139,7 @@ export const Project = () => {
           </Col>
         </Row>
       </Container>
-      <img className="background-image-right" src={colorSharp2}></img>
+      <img className="background-image-right" src={colorSharp2} alt="Background"></img>
     </section>
   )
 }

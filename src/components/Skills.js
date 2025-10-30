@@ -8,7 +8,6 @@ import colorSharp from "../assets/img/color-sharp.png"
 export const Skills = () => {
   const responsive = {
     superLargeDesktop: {
-      // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
       items: 5
     },
@@ -33,30 +32,38 @@ export const Skills = () => {
                 <div className="col-12">
                     <div className="skill-bx wow zoomIn">
                         <h2>Skills</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br></br> Lorem Ipsum has been the industry's standard dummy text.</p>
+                        <p>Expertise in modern web technologies and frameworks with a focus on creating responsive, high-performance applications. Specialized in WordPress development, React.js ecosystem, and eCommerce solutions using Shopify.</p>
                         <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme skill-slider">
                             <div className="item">
-                                <img src={meter1} alt="Image" />
-                                <h5>Web Development</h5>
+                                <img src={meter1} alt="Web Development" />
+                                <h5>WordPress Development</h5>
                             </div>
                             <div className="item">
-                                <img src={meter2} alt="Image" />
-                                <h5>Brand Identity</h5>
+                                <img src={meter2} alt="React.js" />
+                                <h5>React.js & Next.js</h5>
                             </div>
                             <div className="item">
-                                <img src={meter3} alt="Image" />
-                                <h5>Logo Design</h5>
+                                <img src={meter3} alt="Frontend" />
+                                <h5>Frontend Technologies</h5>
                             </div>
                             <div className="item">
-                                <img src={meter1} alt="Image" />
-                                <h5>Web Development</h5>
+                                <img src={meter1} alt="Shopify" />
+                                <h5>Shopify</h5>
+                            </div>
+                            <div className="item">
+                                <img src={meter2} alt="TypeScript" />
+                                <h5>TypeScript</h5>
+                            </div>
+                            <div className="item">
+                                <img src={meter3} alt="CSS Frameworks" />
+                                <h5>Tailwind CSS & Bootstrap</h5>
                             </div>
                         </Carousel>
                     </div>
                 </div>
             </div>
         </div>
-        <img className="background-image-left" src={colorSharp} alt="Image" />
+        <img className="background-image-left" src={colorSharp} alt="Background" />
     </section>
   )
 }
